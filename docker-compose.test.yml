@@ -1,0 +1,9 @@
+web_service:
+  env_file:
+    - ./docker-env/test.env
+api_a:
+  env_file:
+    - ./docker-env/test.env
+api_b:
+  env_file:
+    - ./docker-env/test.env

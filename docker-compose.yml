@@ -1,0 +1,55 @@
+web_service:
+  build: .
+  dockerfile: Dockerfile
+  command: bundle exec rails s -p 8000 -b '0.0.0.0'
+  hostname: api-a
+  stdin_open: true
+  tty: true
+  ports:
+    - "8000:8000"
+  volumes:
+    - ${PWD}:/web_service
+  env_file:
+    - ./docker-env/production.env
+
+api_a:
+  build: .
+  dockerfile: Dockerfile
+  command: bundle exec rails s -p 8001 -b '0.0.0.0'
+  hostname: api-a
+  stdin_open: true
+  tty: true
+  ports:
+    - "8001:8001"
+  volumes:
+    - ${PWD}:/api_a
+  env_file:
+    - ./docker-env/production.env
+
+api_b:
+  build: .
+  dockerfile: Dockerfile
+  command: bundle exec rails s -p 8002 -b '0.0.0.0'
+  hostname: api-b
+  stdin_open: true
+  tty: true
+  ports:
+    - "8002:8002"
+  volumes:
+    - ${PWD}:/api_b
+  env_file:
+    - ./docker-env/production.env
+
+api_products:
+  build: .
+  dockerfile: Dockerfile
+  command: bundle exec rails s -p 8003 -b '0.0.0.0'
+  hostname: api-products
+  stdin_open: true
+  tty: true
+  ports:
+    - "8003:8003"
+  volumes:
+    - ${PWD}:/api_products
+  env_file:
+    - ./docker-env/production.env
