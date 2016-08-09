@@ -1,12 +1,12 @@
 web_service:
   build: .
   dockerfile: Dockerfile
-  command: bundle exec rails s -p 8000 -b '0.0.0.0'
+  command: bundle exec rails s -p 3000 -b '0.0.0.0'
   hostname: api-a
   stdin_open: true
   tty: true
   ports:
-    - "8000:8000"
+    - "3000:3000"
   volumes:
     - ${PWD}:/web_service
   env_file:
@@ -15,12 +15,12 @@ web_service:
 api_a:
   build: .
   dockerfile: Dockerfile
-  command: bundle exec rails s -p 8001 -b '0.0.0.0'
+  command: bundle exec rails s -p 3001 -b '0.0.0.0'
   hostname: api-a
   stdin_open: true
   tty: true
   ports:
-    - "8001:8001"
+    - "3001:3001"
   volumes:
     - ${PWD}:/api_a
   env_file:
@@ -29,12 +29,12 @@ api_a:
 api_b:
   build: .
   dockerfile: Dockerfile
-  command: bundle exec rails s -p 8002 -b '0.0.0.0'
+  command: bundle exec rails s -p 3002 -b '0.0.0.0'
   hostname: api-b
   stdin_open: true
   tty: true
   ports:
-    - "8002:8002"
+    - "3002:3002"
   volumes:
     - ${PWD}:/api_b
   env_file:
@@ -43,12 +43,12 @@ api_b:
 api_products:
   build: .
   dockerfile: Dockerfile
-  command: bundle exec rails s -p 8003 -b '0.0.0.0'
+  command: bundle exec rails s -p 3003 -b '0.0.0.0'
   hostname: api-products
   stdin_open: true
   tty: true
   ports:
-    - "8003:8003"
+    - "3003:3003"
   volumes:
     - ${PWD}:/api_products
   env_file:
