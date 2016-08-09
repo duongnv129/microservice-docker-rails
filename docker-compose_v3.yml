@@ -3,10 +3,13 @@ web_service:
   dockerfile: Dockerfile
   command: bundle exec rails s -p 3000 -b '0.0.0.0'
   hostname: api-a
+  stdin_open: true
   container_name: web_service
   tty: true
   ports:
     - "3000:3000"
+  volumes:
+    - .:/microservice/web_service
   env_file:
     - ./docker-env/production.env
 
@@ -16,9 +19,12 @@ api_a:
   command: bundle exec rails s -p 3001 -b '0.0.0.0'
   hostname: api-a
   container_name: api_a
+  stdin_open: true
   tty: true
   ports:
     - "3001:3001"
+  volumes:
+    - .:/microservice/api_a
   env_file:
     - ./docker-env/production.env
 
@@ -28,9 +34,12 @@ api_b:
   command: bundle exec rails s -p 3002 -b '0.0.0.0'
   hostname: api-b
   container_name: api_b
+  stdin_open: true
   tty: true
   ports:
     - "3002:3002"
+  volumes:
+    - .:/microservice/api_b
   env_file:
     - ./docker-env/production.env
 
@@ -40,8 +49,11 @@ api_products:
   command: bundle exec rails s -p 3003 -b '0.0.0.0'
   hostname: api-products
   container_name: api_products
+  stdin_open: true
   tty: true
   ports:
     - "3003:3003"
+  volumes:
+    - .:/microservice/api_products
   env_file:
     - ./docker-env/production.env
