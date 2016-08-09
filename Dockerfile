@@ -1,5 +1,8 @@
 FROM ruby:2.3.0
 
+ENV MICROSERVICE_GIT_URL https://github.com/nguyenduong127/microservice-docker-rails.git
+ENV MICROSERVICE_GIT_BRANCH master
+
 RUN apt-get update -qq && apt-get install -y build-essential libmysqlclient-dev
 
 RUN mkdir /microservice
